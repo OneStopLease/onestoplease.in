@@ -12,6 +12,10 @@ export interface Product {
   price: number;
   stock: number;
   image_url?: string;
+  brand?: string;
+  model?: string;
+  specifications: Record<string, any>;
+  key_features?: string[];
 }
 
 export interface FormData {
@@ -21,6 +25,10 @@ export interface FormData {
   subcategory: string;
   price: string;
   stock: string;
+  brand?: string;
+  model?: string;
+  specifications: Record<string, any>;
+  key_features: string[];
   secondary_image_files?: File[];
   secondary_image_urls?: string[];
 }
@@ -35,6 +43,10 @@ export default function useProductManager(category: string, subcategoryList: str
     subcategory: "",
     price: "",
     stock: "",
+    brand: "",
+    model: "",
+    specifications: {},
+    key_features: [],
   });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -71,14 +83,26 @@ export default function useProductManager(category: string, subcategoryList: str
 
   const validateForm = () => {
     const newErrors: { [key: string]: string } = {};
-    Object.entries(formData).forEach(([key, value]) => {
+    
+    // Required fields validation
+    const requiredFields = ['name', 'description', 'category', 'subcategory', 'price', 'stock'];
+    
+    requiredFields.forEach(field => {
+      const value = formData[field as keyof FormData];
       if (typeof value === 'string' && !value.trim()) {
-        newErrors[key] = `This ${key} field is required`;
-      } else if (typeof value === 'number' && value === 0) {
-        newErrors[key] = `This ${key} field is required`;
+        newErrors[field] = `This ${field} field is required`;
       }
     });
-    if (!selectedFile && !isEditing) newErrors.image = "Image is required";
+
+    // Image validations
+    if (!selectedFile && !isEditing) {
+      newErrors.image = "Primary image is required";
+    }
+
+    if (!formData.secondary_image_files?.length && !isEditing) {
+      newErrors.secondary_images = "At least one secondary image is required";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -91,6 +115,10 @@ export default function useProductManager(category: string, subcategoryList: str
       subcategory: "",
       price: "",
       stock: "",
+      brand: "",
+      model: "",
+      specifications: {},
+      key_features: [],
     });
     setSelectedFile(null);
     setErrors({});
@@ -101,7 +129,7 @@ export default function useProductManager(category: string, subcategoryList: str
     e.preventDefault();
     if (!validateForm()) return;
 
-    const { name, description, subcategory, price, stock } = formData;
+    const { name, description, subcategory, price, stock, brand, model, specifications, key_features } = formData;
 
     let imageUrl = "";
     let newFileName = "";
@@ -181,6 +209,10 @@ export default function useProductManager(category: string, subcategoryList: str
           subcategory,
           price: Number(price),
           stock: Number(stock),
+          brand,
+          model,
+          specifications,
+          key_features,
         };
         if (imageUrl) updateData.image_url = imageUrl;
         if (secondaryImageUrls.length > 0) updateData.secondary_image_urls = secondaryImageUrls;
@@ -204,6 +236,10 @@ export default function useProductManager(category: string, subcategoryList: str
             subcategory,
             price: Number(price),
             stock: Number(stock),
+            brand,
+            model,
+            specifications,
+            key_features,
             image_url: imageUrl,
             secondary_image_urls: secondaryImageUrls,
           },
@@ -303,6 +339,10 @@ export default function useProductManager(category: string, subcategoryList: str
       subcategory: product.subcategory,
       price: product.price.toString(),
       stock: product.stock.toString(),
+      brand: product.brand || "",
+      model: product.model || "",
+      specifications: product.specifications || {},
+      key_features: product.key_features || [],
     });
     setSelectedFile(null);
     setIsEditing(true);
