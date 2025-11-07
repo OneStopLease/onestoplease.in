@@ -86,7 +86,7 @@ export default function OtpLogin({ closeDialog }: Props) {
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
           />
-          <p className="text-xs text-gray-400 mt-2">
+          <p className="text-xs text-black mt-2">
             We'll send an OTP to your number (India only)
           </p>
         </>
@@ -96,18 +96,18 @@ export default function OtpLogin({ closeDialog }: Props) {
             maxLength={6}
             value={otp}
             onChange={(value) => setOtp(value)}
-            className="w-full border border-highlight"
+            className="w-full border border-highlight text-black"
           >
             <InputOTPGroup>
-              <InputOTPSlot index={0} />
-              <InputOTPSlot index={1} />
-              <InputOTPSlot index={2} />
+              <InputOTPSlot index={0} className="text-black" />
+              <InputOTPSlot index={1} className="text-black" />
+              <InputOTPSlot index={2} className="text-black" />
             </InputOTPGroup>
             <InputOTPSeparator />
             <InputOTPGroup>
-              <InputOTPSlot index={3} />
-              <InputOTPSlot index={4} />
-              <InputOTPSlot index={5} />
+              <InputOTPSlot index={3} className="text-black" />
+              <InputOTPSlot index={4} className="text-black" />
+              <InputOTPSlot index={5} className="text-black" />
             </InputOTPGroup>
           </InputOTP>
         </div>

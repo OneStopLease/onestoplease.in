@@ -11,8 +11,8 @@ body {
     --background: white;
     --foreground: #181818;
     --gray: #E2E3E7; 
-    --highlight: #3BBA9C;
-    --highlight-hover: #32A88D;
+    --highlight: #f44336;
+    --highlight-hover: #e53935;
     --gray-inverted: #2A2B30;
   }
 
@@ -20,13 +20,13 @@ body {
     --background: #181818;
     --foreground: white;
     --gray: #2A2B30; 
-    --highlight: #3BBA9C;
-    --highlight-hover: #32A88D;
+    --highlight: #f44336;
+    --highlight-hover: #e53935;
     --gray-inverted: #E2E3E7;
   }
 
   body {
-    @apply font-primary bg-white text-black leading-loose;
+    @apply font-primary bg-background text-foreground leading-loose;
   }
 
   .h1 {

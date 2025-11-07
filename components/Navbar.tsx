@@ -26,7 +26,7 @@ export default function Navbar() {
   const { role, loading } = useUserRole();
 
   return (
-    <nav className="w-full sticky top-0 px-24 py-1 bg-gray shadow-sm flex items-center justify-between gap-6">
+    <nav className="w-full sticky top-0 z-50 px-24 py-1 bg-gray shadow-sm flex items-center justify-between gap-6">
       {/* Logo */}
       <Link
         href="/"
@@ -46,7 +46,7 @@ export default function Navbar() {
       <select
         value={location}
         onChange={(e) => setLocation(e.target.value)}
-        className="border lg:w-36 bg-white border-highlight px-3 py-1 focus:ring-0 focus:outline-none focus-visible:ring-0 rounded-md text-sm h-8 w-48"
+        className="border lg:w-36 bg-white dark:bg-gray-inverted border-highlight px-3 py-1 focus:ring-0 focus:outline-none focus-visible:ring-0 rounded-md text-sm h-8 w-48 text-black"
       >
         {Locations.map((loc) => (
           <option key={loc} value={loc}>
@@ -59,7 +59,7 @@ export default function Navbar() {
       <Input
         type="text"
         placeholder="Search for furniture, appliances..."
-        className="border bg-white border-highlight px-4 focus:ring-0 focus:outline-none focus-visible:ring-0 py-2 rounded-md w-1/3 h-8 placeholder:text-sm text-sm"
+        className="border bg-white dark:bg-gray-inverted border-highlight px-4 focus:ring-0 focus:outline-none focus-visible:ring-0 py-2 rounded-md w-1/3 h-8 placeholder:text-sm text-sm text-black"
       />
 
       {/* Theme Toggle */}

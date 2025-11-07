@@ -26,9 +26,9 @@ export default function OtpLoginDialog() {
           </div>
 
           {/* Right Form */}
-          <div className="w-full md:w-1/2 bg-white p-6">
+          <div className="w-full md:w-1/2 bg-white dark:bg-gray-inverted p-6">
             <DialogHeader>
-              <DialogTitle className="text-2xl mb-4 font-normal flex justify-center">
+              <DialogTitle className="text-2xl mb-4 font-normal flex justify-center text-black">
                 Login with OTP
               </DialogTitle>
             </DialogHeader>
