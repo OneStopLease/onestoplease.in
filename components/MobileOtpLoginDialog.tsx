@@ -8,9 +8,9 @@ export default function MobileOtpLoginDialog() {
 
   return (
     <Dialog open={isOpen} onOpenChange={close}>
-      <DialogContent className="w-[95%] max-w-[360px] p-5 bg-white rounded-xl">
+      <DialogContent className="w-[95%] max-w-[360px] p-5 bg-white dark:bg-gray-inverted rounded-xl">
         <DialogHeader>
-          <DialogTitle className="text-lg font-semibold text-center mb-2">
+          <DialogTitle className="text-lg font-semibold text-center mb-2 text-black">
             Login with OTP
           </DialogTitle>
         </DialogHeader>

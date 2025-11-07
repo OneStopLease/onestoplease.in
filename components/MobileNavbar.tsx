@@ -47,7 +47,7 @@ export default function MobileNavbar() {
           <select
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="border bg-white border-highlight px-3 py-1 rounded-md text-sm h-9"
+            className="border bg-white dark:bg-gray-inverted border-highlight px-3 py-1 rounded-md text-sm h-9 text-black"
           >
             {Locations.map((loc) => (
               <option key={loc} value={loc}>
@@ -90,7 +90,7 @@ export default function MobileNavbar() {
       <Input
         type="text"
         placeholder="Search for furniture, appliances..."
-        className="border border-highlight bg-white h-9 px-3 py-1 text-sm rounded-md w-full"
+        className="border border-highlight bg-white dark:bg-gray-inverted h-9 px-3 py-1 text-sm rounded-md w-full text-black"
       />
 
       {/* Login Dialogs */}

@@ -42,13 +42,13 @@ const ProfileDropdown = ({ type = "desktop" }: Props) => {
           <DropdownMenu.Portal>
             <DropdownMenu.Content
               sideOffset={8}
-              className="absolute right-0 bg-white shadow-md rounded-md p-2 min-w-[160px] text-left z-[9999]"
+              className="absolute right-0 bg-white dark:bg-gray-inverted shadow-md rounded-md p-2 min-w-[160px] text-left z-[9999]"
             >
               {ProfileList.map((item) => (
                 <DropdownMenu.Item asChild key={item.name}>
                   <Link
                     href={item.reference}
-                    className="flex items-center gap-2 focus:ring-0 focus:outline-none px-2 py-1 text-sm hover:bg-black/50 hover:text-white rounded-md"
+                    className="flex items-center gap-2 focus:ring-0 focus:outline-none px-2 py-1 text-sm text-foreground hover:bg-highlight/10 hover:text-highlight rounded-md"
                   >
                     {item.icon}
                     {item.name}
@@ -56,7 +56,7 @@ const ProfileDropdown = ({ type = "desktop" }: Props) => {
                 </DropdownMenu.Item>
               ))}
 
-              <DropdownMenu.Separator className="h-px bg-gray-200 my-1" />
+              <DropdownMenu.Separator className="h-px bg-gray-200 dark:bg-gray-400 my-1" />
 
               <DropdownMenu.Item>
                 <Button
